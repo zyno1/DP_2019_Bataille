@@ -1,6 +1,7 @@
 package model;
 
 import model.ship.EraFactory;
+import model.ship.Point;
 
 import java.awt.image.BufferedImage;
 
@@ -16,6 +17,8 @@ public class Bataille {
 
         player1 = new Map();
         player2 = new Map();
+
+        player1.addShip(factory.createShip(new Point(1, 3)));
     }
 
     public void draw(BufferedImage img) {
