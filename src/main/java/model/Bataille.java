@@ -1,19 +1,20 @@
 package model;
 
+import ai.AI;
+import ai.RandomAI;
 import model.ship.EraFactory;
 import model.ship.Point;
 
 import java.awt.image.BufferedImage;
 
 public class Bataille {
-    private boolean gameover;
     private EraFactory factory;
     private Map player1;
     private Map player2;
     private int playerTurn;
+    private AI ai;
 
     public Bataille(EraFactory factory) {
-        this.gameover = false;
         this.factory = factory;
 
         player1 = new Map();
@@ -22,6 +23,11 @@ public class Bataille {
 
         player1.addShip(factory.createShip(new Point(1, 3)));
         player2.addShip(factory.createShip(new Point(2,5)));
+        ai = new RandomAI(this);
+    }
+
+    public AI getAi(){
+        return ai;
     }
 
     public boolean shoot(Point target){
@@ -51,6 +57,10 @@ public class Bataille {
     }
 
     public boolean isGameover() {
+        boolean gameover = false;
+        if(player1.isEmpty() || player2.isEmpty()){
+            gameover=true;
+        }
         return gameover;
     }
 }

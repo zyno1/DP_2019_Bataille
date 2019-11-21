@@ -7,4 +7,6 @@ public interface Ship {
     int getWidth();
     int getHeight();
     Point getPos();
+    void takeDammage(Point p);
+    int getLife();
 }

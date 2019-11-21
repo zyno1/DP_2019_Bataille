@@ -9,8 +9,11 @@ public class Croiseur implements Ship {
 
     private Point pos;
 
+    private int life;
+
     public Croiseur(Point pos) {
         this.pos = pos;
+        life = 4;
     }
 
     @Override
@@ -35,4 +38,16 @@ public class Croiseur implements Ship {
     public Point getPos() {
         return pos;
     }
+
+    @Override
+    public void takeDammage(Point p) {
+        life--;
+    }
+
+    @Override
+    public int getLife() {
+        return life;
+    }
+
+
 }

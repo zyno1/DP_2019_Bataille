@@ -22,6 +22,10 @@ public class Map {
         ships.add(s);
     }
 
+    public boolean isEmpty(){
+        return ships.isEmpty();
+    }
+
     public void draw(BufferedImage img) {
         Graphics g = img.getGraphics();
 
@@ -52,7 +56,8 @@ public class Map {
                     int x = p.getX()+j;
                     int y = p.getY()+i;
                     if(target.getX()==x && target.getY()==y){
-                        //TODO s.loseLife()
+                        s.takeDammage(target);
+                        if(s.getLife()<=0) ships.remove(s);
                         return true;
                     }
                 }
