@@ -1,5 +1,6 @@
 package model;
 
+import model.ship.Point;
 import model.ship.Ship;
 
 import java.awt.*;
@@ -39,5 +40,25 @@ public class Map {
         for(Ship s : ships) {
             s.draw(img, cell_size);
         }
+    }
+
+    public boolean shoot(Point target){
+        for(Ship s : ships){
+            Point p = s.getPos();
+            int h = s.getHeight();
+            int w = s.getWidth();
+            for(int i=0; i<h; i++){
+                for(int j=0; j<w; j++){
+                    int x = p.getX()+j;
+                    int y = p.getY()+i;
+                    if(target.getX()==x && target.getY()==y){
+                        //TODO s.loseLife()
+                        return true;
+                    }
+                }
+            }
+
+        }
+        return false;
     }
 }

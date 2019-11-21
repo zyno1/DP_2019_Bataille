@@ -20,4 +20,19 @@ public class Croiseur implements Ship {
         g.setColor(Color.GREEN);
         g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h * cell_size);
     }
+
+    @Override
+    public int getWidth() {
+        return w;
+    }
+
+    @Override
+    public int getHeight() {
+        return h;
+    }
+
+    @Override
+    public Point getPos() {
+        return pos;
+    }
 }

@@ -10,6 +10,7 @@ public class Bataille {
     private EraFactory factory;
     private Map player1;
     private Map player2;
+    private int playerTurn;
 
     public Bataille(EraFactory factory) {
         this.gameover = false;
@@ -17,8 +18,25 @@ public class Bataille {
 
         player1 = new Map();
         player2 = new Map();
+        playerTurn = 1;
 
         player1.addShip(factory.createShip(new Point(1, 3)));
+        player2.addShip(factory.createShip(new Point(2,5)));
+    }
+
+    public boolean shoot(Point target){
+        Map mapTargeted;
+        if(playerTurn == 1){
+            mapTargeted = player2;
+            playerTurn = 2;
+        }
+        else
+        {
+            mapTargeted = player1;
+            playerTurn = 1;
+        }
+
+        return mapTargeted.shoot(target);
     }
 
     public void draw(BufferedImage img) {
