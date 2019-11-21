@@ -35,7 +35,7 @@ public class GameController implements MouseListener {
         Point p = mainFrame.getMousePosition();
         int x = (p.x - INIT_X)/30;
         int y = (p.y - INIT_Y)/30;
-        System.out.println(model.shoot(new model.ship.Point(x,y)));
+        model.shoot(new model.ship.Point(x,y));
         verifEnd();
         model.getAi().play();
         verifEnd();
