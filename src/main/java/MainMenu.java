@@ -1,5 +1,4 @@
 import model.Bataille;
-import model.ship.EraFactoryXX;
 
 import javax.swing.*;
 import java.awt.*;

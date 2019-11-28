@@ -57,10 +57,5 @@ public class GameController implements MouseListener {
         }
     }
 
-    public void setModel() {
-
-
-
-    }
 
 }

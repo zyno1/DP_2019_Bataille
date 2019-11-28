@@ -13,9 +13,7 @@ public class MainFrame extends JPanel {
 
         this.panel = panel;
         this.add(panel, BorderLayout.CENTER);
-//        this.add(new MenuBar(), BorderLayout.NORTH);
-//        setVisible(true);
-//        pack();
+
         panel.requestFocus();
         this.setPreferredSize(new Dimension(600,400));
     }
