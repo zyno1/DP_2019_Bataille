@@ -3,6 +3,8 @@ package model;
 import ai.AI;
 import ai.RandomAI;
 import model.ship.EraFactory;
+import model.ship.EraFactoryXVII;
+import model.ship.EraFactoryXX;
 import model.ship.Point;
 
 import java.awt.image.BufferedImage;
@@ -24,6 +26,26 @@ public class Bataille {
         player1.addShip(factory.createShip(new Point(1, 3)));
         player2.addShip(factory.createShip(new Point(2,5)));
         ai = new RandomAI(this);
+    }
+
+    public Bataille(String era, String aiPattern, String name) {
+
+        if(era.equals("XX")) {
+            this.factory = new EraFactoryXX();
+        }
+
+        if(era.equals("XVII")) {
+            this.factory = new EraFactoryXVII();
+        }
+
+        player1 = new Map();
+        player2 = new Map();
+        playerTurn = 1;
+
+        player1.addShip(factory.createShip(new Point(1, 3)));
+        player2.addShip(factory.createShip(new Point(2,5)));
+        ai = new RandomAI(this);
+
     }
 
     public AI getAi(){

@@ -12,7 +12,7 @@ public class DrawPanel extends JPanel {
     private Bataille game;
 
     public DrawPanel(Bataille game) {
-        setSize(600, 600);
+        setSize(600, 400);
         setFocusable(true);
         this.game = game;
 

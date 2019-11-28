@@ -9,10 +9,10 @@ import java.awt.event.MouseListener;
 public class GameController implements MouseListener {
     public static int INIT_X = 305;
     public static int INIT_Y = 35;
-    private JFrame mainFrame;
+    private JPanel mainFrame;
     private Bataille model;
 
-    public GameController(JFrame mainFrame, Bataille model){
+    public GameController(JPanel mainFrame, Bataille model){
         super();
         this.mainFrame=mainFrame;
         mainFrame.addMouseListener(this);
@@ -55,6 +55,12 @@ public class GameController implements MouseListener {
         if(model.isGameover()){
             System.exit(0);
         }
+    }
+
+    public void setModel() {
+
+
+
     }
 
 }
