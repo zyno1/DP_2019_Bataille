@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainMenu extends JPanel implements ActionListener {
 
@@ -22,7 +24,9 @@ public class MainMenu extends JPanel implements ActionListener {
     private String name = "";
 
     private Bataille model;
-    private Boolean created = false;
+
+    private JButton tempEra = null;
+    private JButton tempAi = null;
 
     public MainMenu() {
 
@@ -78,23 +82,28 @@ public class MainMenu extends JPanel implements ActionListener {
 
         JLabel era = new JLabel("Era : ");
         JButton eraXX = new JButton("XX");
+        eraXX.setBackground(Color.WHITE);
         eraXX.addActionListener(this);
         JButton eraXVII = new JButton("XVII");
         eraXVII.addActionListener(this);
+        eraXVII.setBackground(Color.WHITE);
         panel2.add(era);
         panel2.add(eraXX);
         panel2.add(eraXVII);
 
         JLabel ai = new JLabel("Ai :");
         JButton aiRandom = new JButton("Random");
+        aiRandom.setBackground(Color.WHITE);
         aiRandom.addActionListener(this);
         JButton aiCrossed = new JButton("Crossed");
-        aiRandom.addActionListener(this);
+        aiCrossed.setBackground(Color.WHITE);
+        aiCrossed.addActionListener(this);
         panel3.add(ai);
         panel3.add(aiRandom);
         panel3.add(aiCrossed);
 
         JButton confirm = new JButton("Confirm");
+        confirm.setBackground(Color.WHITE);
         confirm.addActionListener(this);
         panelFinal.add(confirm);
 
@@ -123,25 +132,49 @@ public class MainMenu extends JPanel implements ActionListener {
 
         if(actionEvent.getActionCommand().equals("XX")){
             era = "XX";
+            Object source = actionEvent.getSource();
+            ((JButton)source).setBackground(Color.GREEN);
+            if(tempEra != null) {
+                tempEra.setBackground(Color.WHITE);
+            }
+            tempEra = (JButton)source;
 //            System.out.println(era);
         }
 
         if(actionEvent.getActionCommand().equals("XVII")){
             era = "XVII";
+            Object source = actionEvent.getSource();
+            ((JButton)source).setBackground(Color.YELLOW);
+            if(tempEra != null) {
+                tempEra.setBackground(Color.WHITE);
+            }
+            tempEra = (JButton)source;
 //            System.out.println(era);
         }
 
         if(actionEvent.getActionCommand().equals("Random")){
             ai = "Random";
+            Object source = actionEvent.getSource();
+            ((JButton)source).setBackground(Color.CYAN);
+            if(tempAi != null) {
+                tempAi.setBackground(Color.WHITE);
+            }
+            tempAi = (JButton)source;
         }
 
         if(actionEvent.getActionCommand().equals("Crossed")){
             ai = "Crossed";
+            Object source = actionEvent.getSource();
+            ((JButton)source).setBackground(Color.CYAN);
+            if(tempAi != null) {
+                tempAi.setBackground(Color.WHITE);
+            }
+            tempAi = (JButton)source;
         }
 
         if(actionEvent.getActionCommand().equals("Confirm")){
             model.setUp(era, ai, name);
-//            created = true;
+
             updateFrame();
             for (Component component : getComponents()) {
                 if (choicePanel == component) {
@@ -172,8 +205,6 @@ public class MainMenu extends JPanel implements ActionListener {
 
 
     public void updateFrame() {
-//        System.out.println(created);
-//        if(created) {
 
             drawPanel.draw();
             mf.repaint();
@@ -183,7 +214,6 @@ public class MainMenu extends JPanel implements ActionListener {
                 e.printStackTrace();
             }
 
-//        }
 
     }
 }

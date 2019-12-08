@@ -76,7 +76,11 @@ public class DrawPanel extends JPanel {
             int x = entry.getKey().getX();
             int y = entry.getKey().getY();
             if(entry.getValue()){
-                g.setColor(Color.GREEN);
+                if(game.getEra().equals("XX")) {
+                    g.setColor(Color.GREEN);
+                }else{
+                    g.setColor(Color.YELLOW);
+                }
             }else{
                 g.setColor(Color.RED);
             }

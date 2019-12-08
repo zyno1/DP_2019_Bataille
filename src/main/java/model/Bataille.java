@@ -15,12 +15,14 @@ public class Bataille {
     private Map player2;
     private int playerTurn;
     private AI ai;
+    private String era;
 
     public Bataille() {
 
         player1 = new Map();
         player2 = new Map();
         playerTurn = 1;
+        era = "temp";
 
     }
 
@@ -60,10 +62,12 @@ public class Bataille {
     public void setUp(String era, String aiPattern, String name) {
         if(era.equals("XX")) {
             this.factory = new EraFactoryXX();
+            this.era = era;
         }
 
         if(era.equals("XVII")) {
             this.factory = new EraFactoryXVII();
+            this.era = era;
         }
 
         player2.addShip(factory.createShip(new Point(2,5)));
@@ -78,6 +82,8 @@ public class Bataille {
     public AI getAi(){
         return ai;
     }
+
+    public String getEra() { return era;}
 
     public boolean shoot(Point target){
         Map mapTargeted;
