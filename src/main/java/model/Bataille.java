@@ -42,7 +42,7 @@ public class Bataille {
         player2 = new Map();
         playerTurn = 1;
 
-        player1.addShip(factory.createShip(new Point(1, 3)));
+        player1.addShip(factory.createShip(new Point(1,3)));
         player2.addShip(factory.createShip(new Point(2,5)));
         ai = new RandomAI(this);
 
@@ -68,14 +68,10 @@ public class Bataille {
     }
 
     public void draw(BufferedImage img) {
-        int w = img.getWidth() - 20;
-        int h = img.getHeight() - 10;
 
-        BufferedImage left = img.getSubimage(5, 5, w / 2, h);
-        BufferedImage right = img.getSubimage(10 + w / 2, 5, w / 2, h);
 
-        player1.draw(left);
-        player2.draw(right);
+        player1.draw(img);
+        //player2.draw(right);
     }
 
     public boolean isGameover() {

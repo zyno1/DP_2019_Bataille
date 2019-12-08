@@ -149,7 +149,6 @@ public class MainMenu extends JPanel implements ActionListener {
                     remove(choicePanel);
                     add(gamePanel, BorderLayout.CENTER);
                     add(new MenuBar(this), BorderLayout.NORTH);
-                    System.out.println("test");
                 }
             }
         }
