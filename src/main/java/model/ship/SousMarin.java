@@ -3,20 +3,20 @@ package model.ship;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Croiseur implements Ship {
+public class SousMarin implements Ship {
     private int w = 1;
-    private int h = 4;
+    private int h = 2;
 
     private Point pos;
     private int direction;
 
     private int life;
 
-    public Croiseur(Point pos, int d) {
+    public SousMarin(Point pos, int d) {
 
         this.pos = pos;
         this.direction = d;
-        life = 4;
+        life = 2;
 
     }
 

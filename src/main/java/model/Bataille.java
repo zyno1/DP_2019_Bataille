@@ -71,12 +71,16 @@ public class Bataille {
         }
 
         player2.addShip(factory.createShip(new Point(2,5), 1));
-        player2.addShip(factory.createShip(new Point(5,3), 1));
+        player2.addShip(factory.createShortShip(new Point(5,3), 2));
         ai = new RandomAI(this);
     }
 
-    public void addShip(Point point, int direction) {
-        player1.addShip(factory.createShip(point,direction));
+    public void addShip(Point point, int direction, int type) {
+        if(type == 1) {
+            player1.addShip(factory.createShip(point, direction));
+        }else{
+            player1.addShip(factory.createShortShip(point, direction));
+        }
     }
 
     public AI getAi(){
@@ -104,7 +108,7 @@ public class Bataille {
 
 
         player1.draw(img);
-        //player2.draw(right);
+//        player2.draw(right);
     }
 
     public boolean isGameover() {

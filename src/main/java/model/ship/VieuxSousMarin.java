@@ -3,20 +3,20 @@ package model.ship;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Croiseur implements Ship {
+public class VieuxSousMarin implements Ship {
     private int w = 1;
-    private int h = 4;
+    private int h = 2;
 
     private Point pos;
     private int direction;
 
     private int life;
 
-    public Croiseur(Point pos, int d) {
+    public VieuxSousMarin(Point pos, int d) {
 
         this.pos = pos;
         this.direction = d;
-        life = 4;
+        life = 1;
 
     }
 
@@ -24,7 +24,7 @@ public class Croiseur implements Ship {
     public void draw(BufferedImage img, int cell_size) {
         Graphics g = img.getGraphics();
 
-        g.setColor(Color.GREEN);
+        g.setColor(Color.YELLOW);
 
         if(direction == 1) {
             g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h * cell_size);
