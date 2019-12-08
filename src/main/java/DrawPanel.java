@@ -71,7 +71,7 @@ public class DrawPanel extends JPanel {
             g.drawLine(0, i * cell_size, cell_size * SIZE, i * cell_size);
         }
 
-        System.out.println("taille " + history.entrySet().size());
+
         for(Map.Entry<model.ship.Point, Boolean> entry : history.entrySet()){
             int x = entry.getKey().getX();
             int y = entry.getKey().getY();
@@ -80,8 +80,7 @@ public class DrawPanel extends JPanel {
             }else{
                 g.setColor(Color.RED);
             }
-            System.out.println(entry.getKey()+"  " + entry.getValue());
-            g.fillRect(x, y, SIZE, SIZE);
+            g.fillRect(x*cell_size, y*cell_size, cell_size, cell_size);
         }
     }
 

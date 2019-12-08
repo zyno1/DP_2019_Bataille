@@ -173,6 +173,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
 
     public void updateFrame() {
+        System.out.println(created);
         if(created) {
 
             drawPanel.draw();
