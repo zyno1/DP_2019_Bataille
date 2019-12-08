@@ -7,8 +7,8 @@ import java.awt.event.MouseListener;
 
 
 public class GameController implements MouseListener {
-    public static int INIT_X = 305;
-    public static int INIT_Y = 35;
+    public static int INIT_X = 300;
+    public static int INIT_Y = 0;
     private JPanel mainFrame;
     private Bataille model;
 
