@@ -1,5 +1,5 @@
 package model.ship;
 
 public interface EraFactory {
-    public Ship createShip(Point p);
+    public Ship createShip(Point p, int direction);
 }

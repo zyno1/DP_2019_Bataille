@@ -33,8 +33,8 @@ public class Bataille {
         player2 = new Map();
         playerTurn = 1;
 
-        player1.addShip(factory.createShip(new Point(1, 3)));
-        player2.addShip(factory.createShip(new Point(2,5)));
+        player1.addShip(factory.createShip(new Point(1, 3), 1));
+        player2.addShip(factory.createShip(new Point(2,5), 1));
         ai = new RandomAI(this);
     }
 
@@ -52,9 +52,9 @@ public class Bataille {
         player2 = new Map();
         playerTurn = 1;
 
-        player1.addShip(factory.createShip(new Point(1,3)));
-        player2.addShip(factory.createShip(new Point(2,5)));
-        player2.addShip(factory.createShip(new Point(5,3)));
+        player1.addShip(factory.createShip(new Point(1,3), 1));
+        player2.addShip(factory.createShip(new Point(2,5), 1));
+        player2.addShip(factory.createShip(new Point(5,3), 1));
         ai = new RandomAI(this);
 
     }
@@ -70,13 +70,13 @@ public class Bataille {
             this.era = era;
         }
 
-        player2.addShip(factory.createShip(new Point(2,5)));
-        player2.addShip(factory.createShip(new Point(5,3)));
+        player2.addShip(factory.createShip(new Point(2,5), 1));
+        player2.addShip(factory.createShip(new Point(5,3), 1));
         ai = new RandomAI(this);
     }
 
-    public void addShip(Point point) {
-        player1.addShip(factory.createShip(point));
+    public void addShip(Point point, int direction) {
+        player1.addShip(factory.createShip(point,direction));
     }
 
     public AI getAi(){

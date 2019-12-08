@@ -8,12 +8,16 @@ public class Croiseur implements Ship {
     private int h = 4;
 
     private Point pos;
+    private int direction;
 
     private int life;
 
-    public Croiseur(Point pos) {
+    public Croiseur(Point pos, int d) {
+
         this.pos = pos;
-        life = 4;
+        this.direction = d;
+        life = 2;
+
     }
 
     @Override
@@ -21,7 +25,12 @@ public class Croiseur implements Ship {
         Graphics g = img.getGraphics();
 
         g.setColor(Color.GREEN);
-        g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h * cell_size);
+
+        if(direction == 1) {
+            g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h * cell_size);
+        }else{
+            g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, h * cell_size, w * cell_size);
+        }
     }
 
     @Override

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 
 
 public class GameController implements MouseListener {
@@ -14,6 +15,9 @@ public class GameController implements MouseListener {
     private JPanel mainFrame;
     private Bataille model;
     private int shipleft;
+    private model.ship.Point first = null;
+    private model.ship.Point second = null;
+
 
     public GameController(JPanel mainFrame, Bataille model){
         super();
@@ -41,10 +45,27 @@ public class GameController implements MouseListener {
         int y = (p.y - INIT_Y)/30;
 
         if(shipleft>0) {
-            if(p.x/30 < INIT_X/30 && p.y/30 < MAX_HEIGHT-3) {
-                model.addShip(new model.ship.Point(p.x/30, p.y/30));
-                shipleft--;
+            if(p.x/30 < INIT_X/30 && p.y/30 < MAX_HEIGHT) {
+                if (first == null) {
+                    first = new model.ship.Point(p.x/30, p.y/30);
+                }else if(second == null) {
+                    second = new model.ship.Point(p.x/30, p.y/30);
+                    int a = second.getX() - first.getX();
+                    int b = second.getY() - first.getY();
+                    if(a > 0 && a > b) {
+                        model.addShip(new model.ship.Point(first.getX(), first.getY()), 2); //left
+                        shipleft--;
+                        first = null;
+                        second = null;
+                    }else {
+                        model.addShip(new model.ship.Point(first.getX(), first.getY()), 1); //down
+                        shipleft--;
+                        first = null;
+                        second = null;
+                    }
+                }
             }
+
         }else{
             if(p.y/30 < MAX_HEIGHT && p.x/30 > INIT_X/30) {
                 model.ship.Point target = new model.ship.Point(x, y);

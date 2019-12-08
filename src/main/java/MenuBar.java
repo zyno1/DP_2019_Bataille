@@ -11,10 +11,15 @@ public class MenuBar extends JMenuBar implements ActionListener {
         menu = mm;
 
         JMenu menu = new JMenu("Options");
-        JMenuItem item = new JMenuItem("ayaya");
+
+        JMenuItem item = new JMenuItem("Recommencer");
         item.addActionListener(this);
 
+        JMenuItem quitter = new JMenuItem("Quitter");
+        quitter.addActionListener(this);
+
         menu.add(item);
+        menu.add(quitter);
         this.add(menu);
 
 
@@ -23,7 +28,14 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        menu.retourMainMenu();
+
+        if(actionEvent.getActionCommand().equals("Recommencer")) {
+            menu.retourMainMenu();
+        }
+
+        if(actionEvent.getActionCommand().equals("Quitter")) {
+            System.exit(0);
+        }
 
     }
 }

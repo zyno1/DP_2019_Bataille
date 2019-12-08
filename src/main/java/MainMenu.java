@@ -75,33 +75,43 @@ public class MainMenu extends JPanel implements ActionListener {
         JPanel panel3 = new JPanel();
         JPanel panelFinal = new JPanel();
 
+        //Panel 1
         JLabel player = new JLabel("Player name :");
         JTextField name = new JTextField("Ayaya");
         panel1.add(player);
         panel1.add(name);
 
+        //Panel 2
         JLabel era = new JLabel("Era : ");
+
         JButton eraXX = new JButton("XX");
         eraXX.setBackground(Color.WHITE);
         eraXX.addActionListener(this);
+
         JButton eraXVII = new JButton("XVII");
         eraXVII.addActionListener(this);
         eraXVII.setBackground(Color.WHITE);
+
         panel2.add(era);
         panel2.add(eraXX);
         panel2.add(eraXVII);
 
+        //Panel 3
         JLabel ai = new JLabel("Ai :");
+
         JButton aiRandom = new JButton("Random");
         aiRandom.setBackground(Color.WHITE);
         aiRandom.addActionListener(this);
+
         JButton aiCrossed = new JButton("Crossed");
         aiCrossed.setBackground(Color.WHITE);
         aiCrossed.addActionListener(this);
+
         panel3.add(ai);
         panel3.add(aiRandom);
         panel3.add(aiCrossed);
 
+        //Final panel
         JButton confirm = new JButton("Confirm");
         confirm.setBackground(Color.WHITE);
         confirm.addActionListener(this);
@@ -111,9 +121,6 @@ public class MainMenu extends JPanel implements ActionListener {
         choicePanel.add(panel2);
         choicePanel.add(panel3);
         choicePanel.add(panelFinal);
-
-
-
     }
 
 
@@ -199,6 +206,8 @@ public class MainMenu extends JPanel implements ActionListener {
                 add(menuPanel, BorderLayout.CENTER);
             }
         }
+        mainGame();
+        newGame();
         repaint();
         revalidate();
     }

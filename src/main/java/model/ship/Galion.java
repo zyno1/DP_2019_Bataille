@@ -9,12 +9,14 @@ public class Galion implements Ship {
     private int h = 4;
 
     private Point pos;
+    private int direction;
 
     private int life;
 
-    public Galion(Point pos) {
+    public Galion(Point pos, int d) {
 
         this.pos = pos;
+        this.direction = d;
         life = 2;
 
     }
@@ -24,7 +26,12 @@ public class Galion implements Ship {
         Graphics g = img.getGraphics();
 
         g.setColor(Color.YELLOW);
-        g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h * cell_size);
+
+        if(direction == 1) {
+            g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h * cell_size);
+        }else{
+            g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, h * cell_size, w * cell_size);
+        }
     }
 
     @Override
