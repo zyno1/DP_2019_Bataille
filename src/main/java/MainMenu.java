@@ -49,7 +49,7 @@ public class MainMenu extends JPanel implements ActionListener {
     public void mainGame() {
         gamePanel = new JPanel();
 
-//        Bataille model = new Bataille(new EraFactoryXX());
+        model = new Bataille();
         drawPanel = new DrawPanel(model);
         mf = new MainFrame(drawPanel);
 
@@ -140,9 +140,8 @@ public class MainMenu extends JPanel implements ActionListener {
         }
 
         if(actionEvent.getActionCommand().equals("Confirm")){
-            model = new Bataille(era, ai, name);
-            mainGame();
-            created = true;
+            model.setUp(era, ai, name);
+//            created = true;
             updateFrame();
             for (Component component : getComponents()) {
                 if (choicePanel == component) {
@@ -173,8 +172,8 @@ public class MainMenu extends JPanel implements ActionListener {
 
 
     public void updateFrame() {
-        System.out.println(created);
-        if(created) {
+//        System.out.println(created);
+//        if(created) {
 
             drawPanel.draw();
             mf.repaint();
@@ -184,7 +183,7 @@ public class MainMenu extends JPanel implements ActionListener {
                 e.printStackTrace();
             }
 
-        }
+//        }
 
     }
 }
