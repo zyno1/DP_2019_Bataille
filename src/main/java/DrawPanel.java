@@ -52,7 +52,9 @@ public class DrawPanel extends JPanel {
 
 
     public void addToHistory(Point p, boolean b){
-        history.put(p, b);
+        if(!history.containsKey(p)){
+            history.put(p, b);
+        }
     }
 
     public void drawHistory(BufferedImage img) {
