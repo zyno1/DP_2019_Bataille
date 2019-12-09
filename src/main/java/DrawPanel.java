@@ -3,6 +3,7 @@ import model.ship.Point;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +15,8 @@ public class DrawPanel extends JPanel {
     private BufferedImage nextFrame;
 
     private Bataille game;
+
+    //private Drawable tmp;
 
     private HashMap<Point, Boolean> history;
 
@@ -46,6 +49,8 @@ public class DrawPanel extends JPanel {
         BufferedImage tmp = currentFrame;
         currentFrame = nextFrame;
         nextFrame = tmp;
+
+        //draw tmp
 
         repaint();
     }
@@ -86,6 +91,13 @@ public class DrawPanel extends JPanel {
             }
             g.fillRect(x*cell_size, y*cell_size, cell_size, cell_size);
         }
+    }
+
+    @Override
+    protected void processMouseMotionEvent(MouseEvent e) {
+        super.processMouseMotionEvent(e);
+        //updatye tmp pos
+        //repaint
     }
 
     @Override

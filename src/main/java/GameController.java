@@ -29,6 +29,7 @@ public class GameController implements MouseListener {
     }
 
 
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -71,7 +72,7 @@ public class GameController implements MouseListener {
             }
 
         }else{
-            if(p.y/30 < MAX_HEIGHT && p.x/30 > INIT_X/30) {
+            if(p.y/30 < MAX_HEIGHT && p.x/30 > INIT_X/30 - 1) {
                 model.ship.Point target = new model.ship.Point(x, y);
                 boolean touched = model.shoot(target);
                 ((DrawPanel) ((MainFrame) mainFrame).getPanel()).addToHistory(target, touched);
