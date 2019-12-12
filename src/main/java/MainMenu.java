@@ -51,9 +51,10 @@ public class MainMenu extends JPanel implements ActionListener {
     }
 
     public void mainGame() {
+        model = new Bataille();
         gamePanel = new JPanel();
 
-        model = new Bataille();
+
         drawPanel = new DrawPanel(model);
         mf = new MainFrame(drawPanel);
 
