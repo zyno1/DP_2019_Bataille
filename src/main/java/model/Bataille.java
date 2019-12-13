@@ -2,12 +2,10 @@ package model;
 
 import ai.AI;
 import ai.RandomAI;
-import model.ship.EraFactory;
-import model.ship.EraFactoryXVII;
-import model.ship.EraFactoryXX;
-import model.ship.Point;
+import model.ship.*;
 
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public class Bataille {
     private EraFactory factory;
@@ -23,6 +21,7 @@ public class Bataille {
         player2 = new Map();
         playerTurn = 1;
         era = "temp";
+        factory = new EraFactoryXX();
 
     }
 
@@ -33,8 +32,8 @@ public class Bataille {
         player2 = new Map();
         playerTurn = 1;
 
-        player1.addShip(factory.createShip(new Point(1, 3), 1));
-        player2.addShip(factory.createShip(new Point(2,5), 1));
+        //player1.addShip(factory.createShip(new Point(1, 3), 1));
+        //player2.addShip(factory.createShip(new Point(2,5), 1));
         ai = new RandomAI(this);
     }
 
@@ -52,9 +51,11 @@ public class Bataille {
         player2 = new Map();
         playerTurn = 1;
 
-        player1.addShip(factory.createShip(new Point(1,3), 1));
+
+
+        /*player1.addShip(factory.createShip(new Point(1,3), 1));
         player2.addShip(factory.createShip(new Point(2,5), 1));
-        player2.addShip(factory.createShip(new Point(5,3), 1));
+        player2.addShip(factory.createShip(new Point(5,3), 1));*/
         ai = new RandomAI(this);
 
     }
@@ -70,21 +71,27 @@ public class Bataille {
             this.era = era;
         }
 
-        player2.addShip(factory.createShip(new Point(2,5), 1));
-        player2.addShip(factory.createShortShip(new Point(5,3), 2));
+        //player2.addShip(factory.createShip(new Point(2,5), 1));
+        //player2.addShip(factory.createShortShip(new Point(5,3), 2));
         ai = new RandomAI(this);
     }
 
-    public void addShip(Point point, int direction, int type) {
-        if(type == 1) {
-            player1.addShip(factory.createShip(point, direction));
-        }else{
-            player1.addShip(factory.createShortShip(point, direction));
-        }
+    public void addShip(Ship s){
+        player1.addShip(s);
+        Random r = new Random();
+        int x = r.nextInt(10);
+        int y = r.nextInt(10);
+        Ship s2 = s.getInstance(new Point(x, y), 0);
+        s.setPos(new Point(x,y));
+        player2.addShip(s2);
     }
 
     public AI getAi(){
         return ai;
+    }
+
+    public EraFactory getFactory() {
+        return factory;
     }
 
     public String getEra() { return era;}
@@ -118,4 +125,6 @@ public class Bataille {
         }
         return gameover;
     }
+
+
 }

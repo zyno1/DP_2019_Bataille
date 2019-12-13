@@ -49,6 +49,11 @@ public class Croiseur implements Ship {
     }
 
     @Override
+    public void setPos(Point pos) {
+        this.pos=pos;
+    }
+
+    @Override
     public void takeDammage(Point p) {
         life--;
     }
@@ -56,6 +61,22 @@ public class Croiseur implements Ship {
     @Override
     public int getLife() {
         return life;
+    }
+
+    @Override
+    public void switchDirection() {
+        if(direction==0) direction=1;
+        else direction=0;
+    }
+
+    @Override
+    public Ship getInstance(Point p, int direction) {
+        return new Croiseur(p, direction);
+    }
+
+    @Override
+    public int getDirection(){
+        return direction;
     }
 
 

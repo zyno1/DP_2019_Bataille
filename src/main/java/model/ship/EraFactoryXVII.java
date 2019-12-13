@@ -1,19 +1,7 @@
 package model.ship;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class EraFactoryXVII implements EraFactory {
-
-    private List<Ship> lesBateaux;
-
-    public EraFactoryXVII() {
-
-        lesBateaux = new ArrayList<>();
-
-    }
-
-    @Override
+    /*@Override
     public Ship createShip(Point p, int direction) {
         return new Galion(p,direction);
     }
@@ -22,9 +10,19 @@ public class EraFactoryXVII implements EraFactory {
     public Ship createShortShip(Point p, int direction) {
         return new VieuxSousMarin(p,direction);
     }
+*/
+    @Override
+    public void createShips() {
+
+    }
 
     @Override
     public Ship getNextShip() {
         return null;
+    }
+
+    @Override
+    public boolean hasNextShip() {
+        return false;
     }
 }
