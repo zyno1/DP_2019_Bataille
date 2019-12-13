@@ -1,5 +1,7 @@
 package ai;
 
+import java.util.List;
+
 public interface AI {
-    void play();
+    List<Object> play();
 }

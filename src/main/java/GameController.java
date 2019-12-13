@@ -8,7 +8,8 @@ import java.awt.*;
 
 
 import java.awt.event.*;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class GameController implements MouseMotionListener, MouseListener{
@@ -70,7 +71,8 @@ public class GameController implements MouseMotionListener, MouseListener{
                     boolean touched = model.shoot(target);
                     ((DrawPanel) ((MainFrame) mainFrame).getPanel()).addToHistory(target, touched);
                     verifEnd();
-                    model.getAi().play();
+                    List<Object> temp = model.getAi().play();
+                    ((DrawPanel) ((MainFrame) mainFrame).getPanel()).addToHistoryIA((model.ship.Point)(temp.get(1)), (Boolean)temp.get(0));
                     verifEnd();
                 }
             }
@@ -98,9 +100,13 @@ public class GameController implements MouseMotionListener, MouseListener{
     @Override
     public void mouseMoved(MouseEvent e) {
         if(shipleft && toPos!=null){
-            int x = mainFrame.getMousePosition().x/30;
-            int y = mainFrame.getMousePosition().y/30;
-            toPos.setPos(new model.ship.Point(x,y));
+            try {
+                int x = mainFrame.getMousePosition().x / 30;
+                int y = mainFrame.getMousePosition().y / 30;
+                toPos.setPos(new model.ship.Point(x, y));
+            }catch (Exception ex){
+                System.out.println("lol");
+            }
         }
     }
 

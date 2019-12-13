@@ -19,6 +19,8 @@ public class DrawPanel extends JPanel {
     //private Drawable tmp;
 
     private HashMap<Point, Boolean> history;
+    private HashMap<Point, Boolean> historyIA;
+
 
     public DrawPanel(Bataille game) {
         setSize(600, 400);
@@ -29,6 +31,7 @@ public class DrawPanel extends JPanel {
         nextFrame = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
 
         this.history=new HashMap<>();
+        this.historyIA=new HashMap<>();
     }
 
     public void draw() {
@@ -43,6 +46,7 @@ public class DrawPanel extends JPanel {
         BufferedImage right = nextFrame.getSubimage(10 + w / 2, 5, w / 2, h);
 
         game.draw(left);
+        drawHistoryIA(left);
         drawHistory(right);
 
 
@@ -59,6 +63,12 @@ public class DrawPanel extends JPanel {
     public void addToHistory(Point p, boolean b){
         if(!history.containsKey(p)){
             history.put(p, b);
+        }
+    }
+
+    public void addToHistoryIA(Point p, boolean b){
+        if(!historyIA.containsKey(p)){
+            historyIA.put(p,b);
         }
     }
 
@@ -91,6 +101,19 @@ public class DrawPanel extends JPanel {
             }else{
                 g.setColor(Color.RED);
             }
+            g.fillRect(x*cell_size, y*cell_size, cell_size, cell_size);
+        }
+    }
+
+    public void drawHistoryIA(BufferedImage img){
+
+        Graphics g = img.getGraphics();
+        int cell_size = Math.min(img.getHeight(), img.getWidth()) / SIZE;
+
+        for(Map.Entry<model.ship.Point, Boolean> entry : historyIA.entrySet()){
+            int x = entry.getKey().getX();
+            int y = entry.getKey().getY();
+            g.setColor(Color.RED);
             g.fillRect(x*cell_size, y*cell_size, cell_size, cell_size);
         }
     }

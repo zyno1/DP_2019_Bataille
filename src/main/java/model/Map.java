@@ -51,6 +51,12 @@ public class Map {
             Point p = s.getPos();
             int h = s.getHeight();
             int w = s.getWidth();
+
+            if(s.getDirection() == 0) {
+                h = s.getWidth();
+                w = s.getHeight();
+            }
+
             for(int i=0; i<h; i++){
                 for(int j=0; j<w; j++){
                     int x = p.getX()+j;

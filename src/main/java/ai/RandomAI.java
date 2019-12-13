@@ -22,10 +22,14 @@ public class RandomAI implements AI {
     }
 
     @Override
-    public void play() {
+    public List<Object> play() {
+        List<Object> temp = new ArrayList<>();
         Random rd = new Random();
         int nb = rd.nextInt(pos.size()-1);
-        model.shoot(pos.get(nb));
+        temp.add(model.shoot(pos.get(nb)));
+        temp.add(pos.get(nb));
+//        System.out.println(pos.get(nb).getX() + ", " + pos.get(nb).getY());
         pos.remove(nb);
+        return temp;
     }
 }

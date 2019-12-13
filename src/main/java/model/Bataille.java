@@ -81,7 +81,8 @@ public class Bataille {
         Random r = new Random();
         int x = r.nextInt(10);
         int y = r.nextInt(10);
-        Ship s2 = s.getInstance(new Point(x, y), 0);
+        int d = r.nextInt(1);
+        Ship s2 = s.getInstance(new Point(x, y), d);
         s.setPos(new Point(x,y));
         player2.addShip(s2);
     }
