@@ -1,5 +1,8 @@
 package model.ship;
 
+import sprite.SpriteFactory;
+
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -7,8 +10,11 @@ public class EraFactoryXVII implements EraFactory {
 
     private Iterator<Ship> ships;
 
+    private BufferedImage mapSprite;
+
     public EraFactoryXVII(){
         createShips();
+        mapSprite= SpriteFactory.getInstance().getMapXVII();
     }
 
     /*@Override
@@ -40,5 +46,10 @@ public class EraFactoryXVII implements EraFactory {
     @Override
     public boolean hasNextShip() {
         return ships.hasNext();
+    }
+
+    @Override
+    public BufferedImage getMap() {
+        return mapSprite;
     }
 }

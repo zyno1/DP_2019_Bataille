@@ -17,8 +17,8 @@ public class Bataille {
 
     public Bataille() {
 
-        player1 = new Map();
-        player2 = new Map();
+        player1 = new Map(null);
+        player2 = new Map(null);
         playerTurn = 1;
         era = "temp";
         factory = new EraFactoryXX();
@@ -28,8 +28,8 @@ public class Bataille {
     public Bataille(EraFactory factory) {
         this.factory = factory;
 
-        player1 = new Map();
-        player2 = new Map();
+        player1 = new Map(factory.getMap());
+        player2 = new Map(factory.getMap());
         playerTurn = 1;
 
         //player1.addShip(factory.createShip(new Point(1, 3), 1));
@@ -47,8 +47,8 @@ public class Bataille {
             this.factory = new EraFactoryXVII();
         }
 
-        player1 = new Map();
-        player2 = new Map();
+        player1 = new Map(factory.getMap());
+        player2 = new Map(factory.getMap());
         playerTurn = 1;
 
 
@@ -70,6 +70,9 @@ public class Bataille {
             this.factory = new EraFactoryXVII();
             this.era = era;
         }
+
+        player1 = new Map(factory.getMap());
+        player2 = new Map(factory.getMap());
 
         //player2.addShip(factory.createShip(new Point(2,5), 1));
         //player2.addShip(factory.createShortShip(new Point(5,3), 2));

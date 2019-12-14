@@ -1,5 +1,8 @@
 package model.ship;
 
+import sprite.ShipSprite;
+import sprite.SpriteFactory;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -10,6 +13,8 @@ public class SousMarin implements Ship {
     private Point pos;
     private int direction;
 
+    private ShipSprite sprite;
+
     private int life;
 
     public SousMarin(Point pos, int d) {
@@ -17,6 +22,8 @@ public class SousMarin implements Ship {
         this.pos = pos;
         this.direction = d;
         life = 2;
+
+        sprite = SpriteFactory.getInstance().getSousMarin();
 
     }
 
@@ -27,9 +34,11 @@ public class SousMarin implements Ship {
         g.setColor(Color.GREEN);
 
         if(direction == 1) {
-            g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h * cell_size);
+            //g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h * cell_size);
+            g.drawImage(sprite.getSprite1(), pos.getX() * cell_size, pos.getY() * cell_size, w* cell_size, h* cell_size, null);
         }else{
-            g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, h * cell_size, w * cell_size);
+            //g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, h * cell_size, w * cell_size);
+            g.drawImage(sprite.getSprite0(), pos.getX() * cell_size, pos.getY() * cell_size, h* cell_size, w* cell_size, null);
         }
     }
 

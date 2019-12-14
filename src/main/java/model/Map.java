@@ -14,8 +14,11 @@ public class Map {
 
     private Collection<Ship> ships;
 
-    public Map() {
+    private BufferedImage mapSprite;
+
+    public Map(BufferedImage mapSprite) {
         ships = new ArrayList<>();
+        this.mapSprite=mapSprite;
     }
 
     public void addShip(Ship s) {
@@ -31,8 +34,7 @@ public class Map {
 
         int cell_size = Math.min(img.getHeight(), img.getWidth()) / SIZE;
 
-        g.setColor(Color.BLUE);
-        g.fillRect(0, 0, cell_size * SIZE, cell_size * SIZE);
+        g.drawImage(mapSprite, 0,0, cell_size*SIZE, cell_size*SIZE, null);
 
         g.setColor(Color.BLACK);
 

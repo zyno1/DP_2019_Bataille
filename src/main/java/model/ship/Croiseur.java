@@ -1,5 +1,8 @@
 package model.ship;
 
+import sprite.ShipSprite;
+import sprite.SpriteFactory;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -12,11 +15,15 @@ public class Croiseur implements Ship {
 
     private int life;
 
+    private ShipSprite sprite;
+
     public Croiseur(Point pos, int d) {
 
         this.pos = pos;
         this.direction = d;
         life = 4;
+
+        sprite=SpriteFactory.getInstance().getCroiseur();
 
     }
 
@@ -27,9 +34,12 @@ public class Croiseur implements Ship {
         g.setColor(Color.GREEN);
 
         if(direction == 1) {
-            g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h * cell_size);
+            //g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h * cell_size);
+            g.drawImage(sprite.getSprite1(), pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h*cell_size, null);
         }else{
-            g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, h * cell_size, w * cell_size);
+            //g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, h * cell_size, w * cell_size);
+            g.drawImage(sprite.getSprite0(), pos.getX() *cell_size, pos.getY() *cell_size, h * cell_size, w*cell_size, null);
+
         }
     }
 
