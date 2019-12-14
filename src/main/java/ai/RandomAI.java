@@ -23,6 +23,7 @@ public class RandomAI implements AI {
 
     @Override
     public List<Object> play() {
+        System.out.println("jdlg");
         List<Object> temp = new ArrayList<>();
         Random rd = new Random();
         int nb = rd.nextInt(pos.size()-1);

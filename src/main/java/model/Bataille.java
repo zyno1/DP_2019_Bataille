@@ -1,6 +1,7 @@
 package model;
 
 import ai.AI;
+import ai.CrossAI;
 import ai.RandomAI;
 import model.ship.*;
 
@@ -53,14 +54,24 @@ public class Bataille {
 
 
 
-        /*player1.addShip(factory.createShip(new Point(1,3), 1));
-        player2.addShip(factory.createShip(new Point(2,5), 1));
-        player2.addShip(factory.createShip(new Point(5,3), 1));*/
-        ai = new RandomAI(this);
+        if(aiPattern.equals("Random")){
+            ai = new RandomAI(this);
+        }
+        if(aiPattern.equals("Crossed")){
+            ai = new CrossAI(this);
+        }
 
     }
 
     public void setUp(String era, String aiPattern, String name) {
+
+        if(aiPattern.equals("Random")){
+            ai = new RandomAI(this);
+        }
+        if(aiPattern.equals("Crossed")){
+            ai = new CrossAI(this);
+        }
+
         if(era.equals("XX")) {
             this.factory = new EraFactoryXX();
             this.era = era;
@@ -76,7 +87,7 @@ public class Bataille {
 
         //player2.addShip(factory.createShip(new Point(2,5), 1));
         //player2.addShip(factory.createShortShip(new Point(5,3), 2));
-        ai = new RandomAI(this);
+        //ai = new RandomAI(this);
     }
 
     public void addShip(Ship s){
