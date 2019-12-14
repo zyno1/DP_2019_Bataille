@@ -31,14 +31,11 @@ public class SousMarin implements Ship {
     public void draw(BufferedImage img, int cell_size) {
         Graphics g = img.getGraphics();
 
-        g.setColor(Color.GREEN);
 
         if(direction == 1) {
-            //g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h * cell_size);
-            g.drawImage(sprite.getSprite1(), pos.getX() * cell_size, pos.getY() * cell_size, w* cell_size, h* cell_size, null);
+            g.drawImage(sprite.getSprite1(), pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h*cell_size, null);
         }else{
-            //g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, h * cell_size, w * cell_size);
-            g.drawImage(sprite.getSprite0(), pos.getX() * cell_size, pos.getY() * cell_size, h* cell_size, w* cell_size, null);
+            g.drawImage(sprite.getSprite0(), pos.getX() *cell_size, pos.getY() *cell_size, h * cell_size, w*cell_size, null);
         }
     }
 

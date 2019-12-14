@@ -27,7 +27,6 @@ public class CrossAI implements AI{
 
     @Override
     public List<Object> play() {
-        System.out.println("lgndls");
         List<Object> temp = new ArrayList<>();
         Point target;
         if(nexts.isEmpty()){
@@ -51,12 +50,10 @@ public class CrossAI implements AI{
 
 
     private void majNext(Point last){
-        System.out.println("Prochaine cibles :");
         for(Point p : pos){
             int manhatthanDist = Math.abs(p.getX()-last.getX())+Math.abs(p.getY()-last.getY());
             if(manhatthanDist==1){
                 nexts.add(p);
-                System.out.println(p.toString());
             }
         }
     }

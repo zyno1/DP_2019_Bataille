@@ -10,6 +10,8 @@ public class SpriteFactory {
     private BufferedImage mapXVII;
     private ShipSprite croiseur;
     private ShipSprite sousMarin;
+    private ShipSprite vieuxSousMarin;
+    private ShipSprite gallion;
 
     private static SpriteFactory instance = new SpriteFactory();
 
@@ -21,9 +23,16 @@ public class SpriteFactory {
             BufferedImage croiseur1 = ImageIO.read(new File("assets/croiseurXX-1.png"));
             BufferedImage sousMarin0 = ImageIO.read(new File("assets/sous-marinXX-0.png"));
             BufferedImage sousMarin1 = ImageIO.read(new File("assets/sous-marinXX-1.png"));
+            BufferedImage vieuxSousMarin0 = ImageIO.read(new File("assets/sous-marinXVII-0.png"));
+            BufferedImage vieuxSousMarin1 = ImageIO.read(new File("assets/sous-marinXVII-1.png"));
+            BufferedImage gallion0 = ImageIO.read(new File("assets/gallion-0.png"));
+            BufferedImage gallion1 = ImageIO.read(new File("assets/gallion-1.png"));
+
 
             croiseur = new ShipSprite(croiseur0, croiseur1);
             sousMarin= new ShipSprite(sousMarin0,sousMarin1);
+            vieuxSousMarin = new ShipSprite(vieuxSousMarin0,vieuxSousMarin1);
+            gallion = new ShipSprite(gallion0,gallion1);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,5 +60,9 @@ public class SpriteFactory {
     public ShipSprite getSousMarin() {
         return sousMarin;
     }
+
+    public ShipSprite getVieuxSousMarin(){ return vieuxSousMarin;}
+
+    public ShipSprite getGallion() { return gallion; }
 }
 

@@ -1,5 +1,8 @@
 package model.ship;
 
+import sprite.ShipSprite;
+import sprite.SpriteFactory;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -11,6 +14,8 @@ public class Galion implements Ship {
     private Point pos;
     private int direction;
 
+    private ShipSprite sprite;
+
     private int life;
 
     public Galion(Point pos, int d) {
@@ -19,18 +24,19 @@ public class Galion implements Ship {
         this.direction = d;
         life = 2;
 
+        sprite = SpriteFactory.getInstance().getGallion();
+
     }
 
     @Override
     public void draw(BufferedImage img, int cell_size) {
         Graphics g = img.getGraphics();
 
-        g.setColor(Color.YELLOW);
 
         if(direction == 1) {
-            g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h * cell_size);
+            g.drawImage(sprite.getSprite1(), pos.getX() * cell_size, pos.getY() * cell_size, w * cell_size, h*cell_size, null);
         }else{
-            g.fillRect(pos.getX() * cell_size, pos.getY() * cell_size, h * cell_size, w * cell_size);
+            g.drawImage(sprite.getSprite0(), pos.getX() *cell_size, pos.getY() *cell_size, h * cell_size, w*cell_size, null);
         }
     }
 

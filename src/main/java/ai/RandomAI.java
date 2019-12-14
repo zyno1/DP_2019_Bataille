@@ -23,13 +23,11 @@ public class RandomAI implements AI {
 
     @Override
     public List<Object> play() {
-        System.out.println("jdlg");
         List<Object> temp = new ArrayList<>();
         Random rd = new Random();
         int nb = rd.nextInt(pos.size()-1);
         temp.add(model.shoot(pos.get(nb)));
         temp.add(pos.get(nb));
-//        System.out.println(pos.get(nb).getX() + ", " + pos.get(nb).getY());
         pos.remove(nb);
         return temp;
     }
