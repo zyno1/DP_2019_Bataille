@@ -195,12 +195,12 @@ public class Bataille {
         if(s.getDirection() == 1) {
             for(int i = point.getY(); i<point.getY()+s.getHeight(); i++) {
                 aya.add(new Point(point.getX(),i));
-                System.out.println(point.getX() + "," + i);
+//                System.out.println(point.getX() + "," + i);
             }
         } else{
             for(int i = point.getX(); i<point.getX()+s.getHeight(); i++) {
                 aya.add(new Point(i,point.getY()));
-                System.out.println(i + "," + point.getY());
+//                System.out.println(i + "," + point.getY());
             }
         }
 
@@ -224,7 +224,7 @@ public class Bataille {
                             int a = temp.getX() + j;
                             int b = temp.getY() + i;
                             if (p.getX() == a && p.getY() == b) {
-                                System.out.println("conflit");
+//                                System.out.println("conflit");
                                 return false;
                             }
 
