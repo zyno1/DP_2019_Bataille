@@ -98,12 +98,10 @@ public class Bataille {
         int y = r.nextInt(10);
         int d = r.nextInt(2);
         Ship s2 = s.getInstance(new Point(x, y), d);
-        s.setPos(new Point(x,y));
         while(!checkPos(s2,2)) {
             x = r.nextInt(10);
             y = r.nextInt(10);
             s2.setPos(new Point(x, y));
-            s.setPos(new Point(x,y));
         }
         player2.addShip(s2);
 
@@ -238,6 +236,4 @@ public class Bataille {
         return true;
 
     }
-
-
 }

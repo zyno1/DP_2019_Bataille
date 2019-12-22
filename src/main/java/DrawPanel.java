@@ -78,9 +78,6 @@ public class DrawPanel extends JPanel {
 
         int cell_size = Math.min(img.getHeight(), img.getWidth()) / SIZE;
 
-//        g.setColor(Color.BLUE);
-//        g.fillRect(0, 0, cell_size * SIZE, cell_size * SIZE);
-
         g.drawImage(game.getFactory().getMap(), 0,0, cell_size*SIZE, cell_size*SIZE, null);
 
         g.setColor(Color.BLACK);
