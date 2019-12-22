@@ -19,10 +19,12 @@ public class MainMenu extends JPanel implements ActionListener {
     private JPanel menuPanel;
     private JPanel choicePanel;
     private JPanel scorePanel;
+    private JPanel endPanel;
 
     private JLabel scoreJoueur1;
     private JLabel scoreJoueur2;
     private JLabel test;
+    private JLabel winner;
     private JTextField playerName;
 
     private String era;
@@ -30,6 +32,7 @@ public class MainMenu extends JPanel implements ActionListener {
     private String name = "";
 
     private Bataille model;
+    private Boolean setup = false;
 
     private JButton tempEra = null;
     private JButton tempAi = null;
@@ -47,6 +50,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
 
         this.add(menuPanel, BorderLayout.CENTER);
+        add(new MenuBar(this), BorderLayout.NORTH);
 //        menuPanel.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         era = "XX";
@@ -54,6 +58,7 @@ public class MainMenu extends JPanel implements ActionListener {
         mainGame();
         newGame();
         score();
+        setEnd();
 
     }
 
@@ -152,12 +157,41 @@ public class MainMenu extends JPanel implements ActionListener {
         scorePanel.add(joueur1);
         scorePanel.add(joueur2);
 
+    }
+
+    public void setEnd() {
+
+        endPanel = new JPanel();
+        endPanel.setLayout(new BoxLayout(endPanel, BoxLayout.Y_AXIS));
+
+        JPanel temp = new JPanel();
+        winner = new JLabel();
+        temp.add(winner);
+
+        JPanel temp2 = new JPanel();
+        JButton playAgain = new JButton("Play again ?");
+        playAgain.setActionCommand("play again");
+        playAgain.addActionListener(this);
+        temp2.add(playAgain);
+
+        JPanel temp3 = new JPanel();
+        JButton quit = new JButton("Quit");
+        quit.addActionListener(this);
+        temp3.add(quit);
+
+        endPanel.add(temp);
+        endPanel.add(temp2);
+        endPanel.add(temp3);
 
     }
 
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+
+        if(actionEvent.getActionCommand().equals("Quit")){
+            System.exit(0);
+        }
 
         if(actionEvent.getActionCommand().equals("New Game")) {
             for (Component component : getComponents()) {
@@ -166,7 +200,15 @@ public class MainMenu extends JPanel implements ActionListener {
                     add(choicePanel, BorderLayout.CENTER);
                 }
             }
+        }
 
+        if(actionEvent.getActionCommand().equals("play again")) {
+            for (Component component : getComponents()) {
+                if (endPanel == component) {
+                    remove(endPanel);
+                    add(choicePanel, BorderLayout.CENTER);
+                }
+            }
         }
 
         if(actionEvent.getActionCommand().equals("XX")){
@@ -212,14 +254,14 @@ public class MainMenu extends JPanel implements ActionListener {
         if(actionEvent.getActionCommand().equals("Confirm")){
             name = playerName.getText();
             model.setUp(era, ai, name);
-            test.setText("Ships left " + model.getName() + ": ");
+            setup = true;
+            test.setText("Ships left " + model.getName() + " : ");
 
             updateFrame();
             for (Component component : getComponents()) {
                 if (choicePanel == component) {
                     remove(choicePanel);
                     add(gamePanel, BorderLayout.CENTER);
-                    add(new MenuBar(this), BorderLayout.NORTH);
                     add(scorePanel, BorderLayout.SOUTH);
                 }
             }
@@ -246,8 +288,33 @@ public class MainMenu extends JPanel implements ActionListener {
         revalidate();
     }
 
+    public void end(int gameover) {
+
+        for (Component component : getComponents()) {
+            if (gamePanel == component) {
+                remove(gamePanel);
+                remove(scorePanel);
+                if(gameover==2) {
+                    winner.setText("You lost");
+                }else{
+                    winner.setText("You won in " + model.getShotNumber() + " shots");
+                }
+                add(endPanel, BorderLayout.CENTER);
+            }
+        }
+        mainGame();
+        newGame();
+        repaint();
+        revalidate();
+
+    }
+
 
     public void updateFrame() {
+
+        if(model.isGameover() != 0){
+            end(model.isGameover());
+        }
 
         scoreJoueur1.setText(Integer.toString(model.getPlayer1().getShips().size()));
         scoreJoueur2.setText(Integer.toString(model.getPlayer2().getShips().size()));

@@ -18,7 +18,7 @@ public class Main {
 
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(650,450);
+        frame.setSize(650,410);
 
 
         while(true) {

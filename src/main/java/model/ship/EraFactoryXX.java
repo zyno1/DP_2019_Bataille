@@ -17,16 +17,6 @@ public class EraFactoryXX implements EraFactory {
         this.mapSprite= SpriteFactory.getInstance().getMapXX();
     }
 
-    /*@Override
-    public Ship createShip(Point p, int direction) {
-        return new Croiseur(p,direction);
-    }
-
-    @Override
-    public Ship createShortShip(Point p, int direction) {
-        return new SousMarin(p,direction);
-    }*/
-
     @Override
     public void createShips() {
         ArrayList list=new ArrayList<>();

@@ -70,10 +70,10 @@ public class GameController implements MouseMotionListener, MouseListener{
                     model.ship.Point target = new model.ship.Point(x, y);
                     boolean touched = model.shoot(target);
                     ((DrawPanel) ((MainFrame) mainFrame).getPanel()).addToHistory(target, touched);
-                    verifEnd();
+//                    verifEnd();
                     List<Object> temp = model.getAi().play();
                     ((DrawPanel) ((MainFrame) mainFrame).getPanel()).addToHistoryIA((model.ship.Point)(temp.get(1)), (Boolean)temp.get(0));
-                    verifEnd();
+//                    verifEnd();
                 }
             }
         }else if(e.getButton()==3){
@@ -111,9 +111,9 @@ public class GameController implements MouseMotionListener, MouseListener{
     }
 
 
-    public void verifEnd(){
-        if(model.isGameover()){
-            System.exit(0);
-        }
-    }
+//    public void verifEnd(){
+//        if(model.isGameover()){
+//            System.exit(0);
+//        }
+//    }
 }

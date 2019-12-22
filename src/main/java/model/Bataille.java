@@ -17,12 +17,14 @@ public class Bataille {
     private AI ai;
     private String era;
     private String name;
+    private int shotNumber;
 
     public Bataille() {
 
         player1 = new Map(null);
         player2 = new Map(null);
         playerTurn = 1;
+        shotNumber = 0;
         era = "temp";
         name = "temp";
         factory = new EraFactoryXX();
@@ -110,6 +112,7 @@ public class Bataille {
         if(playerTurn == 1){
             mapTargeted = player2;
             playerTurn = 2;
+            shotNumber ++;
         }
         else
         {
@@ -127,10 +130,19 @@ public class Bataille {
 //        player2.draw(img);
     }
 
-    public boolean isGameover() {
-        boolean gameover = false;
-        if(player1.isEmpty() || player2.isEmpty()){
-            gameover=true;
+    public int isGameover() {
+        int gameover = 0;
+
+        if(player1.isEmpty()) {
+            if(!factory.hasNextShip()) {
+                gameover = 2;
+            }
+        }
+
+        if(player2.isEmpty()){
+            if(!factory.hasNextShip()) {
+                gameover = 1;
+            }
         }
         return gameover;
     }
@@ -235,5 +247,9 @@ public class Bataille {
 
     public String getName() {
         return name;
+    }
+
+    public int getShotNumber() {
+        return shotNumber;
     }
 }

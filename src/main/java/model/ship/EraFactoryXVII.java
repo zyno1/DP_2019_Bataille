@@ -17,20 +17,12 @@ public class EraFactoryXVII implements EraFactory {
         mapSprite= SpriteFactory.getInstance().getMapXVII();
     }
 
-    /*@Override
-    public Ship createShip(Point p, int direction) {
-        return new Galion(p,direction);
-    }
-
-    @Override
-    public Ship createShortShip(Point p, int direction) {
-        return new VieuxSousMarin(p,direction);
-    }
-*/
     @Override
     public void createShips() {
         ArrayList list=new ArrayList<>();
         list.add(new Galion(new Point(0,0),0));
+        list.add(new Galion(new Point(0,0),0));
+        list.add(new VieuxSousMarin(new Point(0,0),0));
         list.add(new VieuxSousMarin(new Point(0,0),0));
         ships = list.iterator();
     }
