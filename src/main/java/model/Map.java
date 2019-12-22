@@ -74,4 +74,8 @@ public class Map {
         }
         return false;
     }
+
+    public Collection<Ship> getShips() {
+        return ships;
+    }
 }

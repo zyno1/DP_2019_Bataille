@@ -55,7 +55,7 @@ public class GameController implements MouseMotionListener, MouseListener{
         if(e.getButton()==1) {
             if (shipleft) {
                 //System.out.println(checkPos(toPos));
-                if(checkPos(toPos)) {
+                if(model.checkPos(toPos,1)) {
                     if (model.getFactory().hasNextShip()) {
                         toPos = model.getFactory().getNextShip();
                         model.addShip(toPos);
@@ -105,27 +105,11 @@ public class GameController implements MouseMotionListener, MouseListener{
                 int y = mainFrame.getMousePosition().y / 30;
                 toPos.setPos(new model.ship.Point(x, y));
             }catch (Exception ex){
-                System.out.println("lol");
+                System.out.println("Erreur placement bateau");
             }
         }
     }
 
-    public boolean checkPos(Ship s){
-        if(s==null){
-            return true;
-        }
-        model.ship.Point p = s.getPos();
-        int x= p.getX();
-        int y= p.getY();
-        int xbis=x;
-        int ybis=y;
-        if(s.getDirection()==1){
-            ybis = y+s.getHeight();
-        }else{
-            xbis = x+s.getHeight();
-        }
-        return x>=0 && xbis >=0 && y >=0 && ybis>=0 && x<=10 && xbis <=10 && y<=10 && ybis <=10;
-    }
 
     public void verifEnd(){
         if(model.isGameover()){

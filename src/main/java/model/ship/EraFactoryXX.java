@@ -31,6 +31,8 @@ public class EraFactoryXX implements EraFactory {
     public void createShips() {
         ArrayList list=new ArrayList<>();
         list.add(new Croiseur(new Point(0,0),0));
+        list.add(new Croiseur(new Point(0,0),0));
+        list.add(new SousMarin(new Point(0,0),0));
         list.add(new SousMarin(new Point(0,0),0));
         ships = list.iterator();
     }
