@@ -18,6 +18,12 @@ public class MainMenu extends JPanel implements ActionListener {
     private JPanel gamePanel;
     private JPanel menuPanel;
     private JPanel choicePanel;
+    private JPanel scorePanel;
+
+    private JLabel scoreJoueur1;
+    private JLabel scoreJoueur2;
+    private JLabel test;
+    private JTextField playerName;
 
     private String era;
     private String ai;
@@ -34,8 +40,8 @@ public class MainMenu extends JPanel implements ActionListener {
         this.setLayout(borderLayout);
 
         menuPanel = new JPanel();
-        JButton button = new JButton("Nouvelle Partie");
-        button.setActionCommand("Nouvelle Partie");
+        JButton button = new JButton("New Game");
+        button.setActionCommand("New Game");
         button.addActionListener(this);
         menuPanel.add(button);
 
@@ -47,6 +53,7 @@ public class MainMenu extends JPanel implements ActionListener {
         ai = "Random";
         mainGame();
         newGame();
+        score();
 
     }
 
@@ -78,9 +85,9 @@ public class MainMenu extends JPanel implements ActionListener {
 
         //Panel 1
         JLabel player = new JLabel("Player name :");
-        JTextField name = new JTextField("Ayaya");
+        playerName = new JTextField("Ayaya");
         panel1.add(player);
-        panel1.add(name);
+        panel1.add(playerName);
 
         //Panel 2
         JLabel era = new JLabel("Era : ");
@@ -124,11 +131,35 @@ public class MainMenu extends JPanel implements ActionListener {
         choicePanel.add(panelFinal);
     }
 
+    public void score() {
+
+        scorePanel = new JPanel();
+
+        JPanel joueur1 = new JPanel();
+        joueur1.setLayout(new BoxLayout(joueur1, BoxLayout.Y_AXIS));
+        test = new JLabel("Ships left " + model.getName() + ": ");
+        scoreJoueur1 = new JLabel(Integer.toString(model.getPlayer1().getShips().size()));
+        joueur1.add(test);
+        joueur1.add(scoreJoueur1);
+
+        JPanel joueur2 = new JPanel();
+        joueur2.setLayout(new BoxLayout(joueur2, BoxLayout.Y_AXIS));
+        JLabel test2 = new JLabel("Ships left IA : ");
+        scoreJoueur2 = new JLabel(Integer.toString(model.getPlayer2().getShips().size()));
+        joueur2.add(test2);
+        joueur2.add(scoreJoueur2);
+
+        scorePanel.add(joueur1);
+        scorePanel.add(joueur2);
+
+
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
-        if(actionEvent.getActionCommand().equals("Nouvelle Partie")) {
+        if(actionEvent.getActionCommand().equals("New Game")) {
             for (Component component : getComponents()) {
                 if (menuPanel == component) {
                     remove(menuPanel);
@@ -146,7 +177,6 @@ public class MainMenu extends JPanel implements ActionListener {
                 tempEra.setBackground(Color.WHITE);
             }
             tempEra = (JButton)source;
-//            System.out.println(era);
         }
 
         if(actionEvent.getActionCommand().equals("XVII")){
@@ -157,7 +187,6 @@ public class MainMenu extends JPanel implements ActionListener {
                 tempEra.setBackground(Color.WHITE);
             }
             tempEra = (JButton)source;
-//            System.out.println(era);
         }
 
         if(actionEvent.getActionCommand().equals("Random")){
@@ -181,7 +210,9 @@ public class MainMenu extends JPanel implements ActionListener {
         }
 
         if(actionEvent.getActionCommand().equals("Confirm")){
+            name = playerName.getText();
             model.setUp(era, ai, name);
+            test.setText("Ships left " + model.getName() + ": ");
 
             updateFrame();
             for (Component component : getComponents()) {
@@ -189,6 +220,7 @@ public class MainMenu extends JPanel implements ActionListener {
                     remove(choicePanel);
                     add(gamePanel, BorderLayout.CENTER);
                     add(new MenuBar(this), BorderLayout.NORTH);
+                    add(scorePanel, BorderLayout.SOUTH);
                 }
             }
         }
@@ -204,6 +236,7 @@ public class MainMenu extends JPanel implements ActionListener {
         for (Component component : getComponents()) {
             if (gamePanel == component) {
                 remove(gamePanel);
+                remove(scorePanel);
                 add(menuPanel, BorderLayout.CENTER);
             }
         }
@@ -216,13 +249,17 @@ public class MainMenu extends JPanel implements ActionListener {
 
     public void updateFrame() {
 
-            drawPanel.draw();
-            mf.repaint();
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        scoreJoueur1.setText(Integer.toString(model.getPlayer1().getShips().size()));
+        scoreJoueur2.setText(Integer.toString(model.getPlayer2().getShips().size()));
+
+        drawPanel.draw();
+        mf.repaint();
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
     }

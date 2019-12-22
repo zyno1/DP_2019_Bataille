@@ -16,6 +16,7 @@ public class Bataille {
     private int playerTurn;
     private AI ai;
     private String era;
+    private String name;
 
     public Bataille() {
 
@@ -23,20 +24,9 @@ public class Bataille {
         player2 = new Map(null);
         playerTurn = 1;
         era = "temp";
+        name = "temp";
         factory = new EraFactoryXX();
 
-    }
-
-    public Bataille(EraFactory factory) {
-        this.factory = factory;
-
-        player1 = new Map(factory.getMap());
-        player2 = new Map(factory.getMap());
-        playerTurn = 1;
-
-        //player1.addShip(factory.createShip(new Point(1, 3), 1));
-        //player2.addShip(factory.createShip(new Point(2,5), 1));
-        ai = new RandomAI(this);
     }
 
     public Bataille(String era, String aiPattern, String name) {
@@ -49,6 +39,7 @@ public class Bataille {
             this.factory = new EraFactoryXVII();
         }
 
+        this.name = name;
         player1 = new Map(factory.getMap());
         player2 = new Map(factory.getMap());
         playerTurn = 1;
@@ -83,12 +74,9 @@ public class Bataille {
             this.era = era;
         }
 
+        this.name = name;
         player1 = new Map(factory.getMap());
         player2 = new Map(factory.getMap());
-
-        //player2.addShip(factory.createShip(new Point(2,5), 1));
-        //player2.addShip(factory.createShortShip(new Point(5,3), 2));
-        //ai = new RandomAI(this);
     }
 
     public void addShip(Ship s){
@@ -235,5 +223,17 @@ public class Bataille {
 
         return true;
 
+    }
+
+    public Map getPlayer1() {
+        return player1;
+    }
+
+    public Map getPlayer2() {
+        return player2;
+    }
+
+    public String getName() {
+        return name;
     }
 }

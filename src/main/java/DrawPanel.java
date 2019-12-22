@@ -16,8 +16,6 @@ public class DrawPanel extends JPanel {
 
     private Bataille game;
 
-    //private Drawable tmp;
-
     private HashMap<Point, Boolean> history;
     private HashMap<Point, Boolean> historyIA;
 
@@ -53,8 +51,6 @@ public class DrawPanel extends JPanel {
         BufferedImage tmp = currentFrame;
         currentFrame = nextFrame;
         nextFrame = tmp;
-
-        //draw tmp
 
         repaint();
     }
@@ -120,8 +116,6 @@ public class DrawPanel extends JPanel {
     @Override
     protected void processMouseMotionEvent(MouseEvent e) {
         super.processMouseMotionEvent(e);
-        //updatye tmp pos
-        //repaint
     }
 
     @Override
