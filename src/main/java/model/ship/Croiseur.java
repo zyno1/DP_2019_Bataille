@@ -62,7 +62,6 @@ public class Croiseur implements Ship {
     @Override
     public void takeDammage(Point p) {
         life--;
-//        System.out.println("hp left croiseur : " + life);
     }
 
     @Override

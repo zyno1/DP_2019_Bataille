@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 
 public class Map {
     private static int SIZE = 10;
@@ -48,6 +47,7 @@ public class Map {
         }
     }
 
+    //permet de tirer et de faire des dégats à un bateau, les bateaux de l'époque XVII ont 2x moins de vie que ceux de l'époque XX
     public boolean shoot(Point target){
         for(Ship s : ships){
             Point p = s.getPos();

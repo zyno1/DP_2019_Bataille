@@ -1,7 +1,3 @@
-import model.Bataille;
-import model.ship.EraFactoryXX;
-import model.ship.Point;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -14,7 +10,6 @@ public class Main {
         MainMenu mm = new MainMenu();
 
         frame.add(mm, BorderLayout.CENTER);
-
 
         frame.pack();
         frame.setVisible(true);

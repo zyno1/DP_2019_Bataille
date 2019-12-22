@@ -62,7 +62,6 @@ public class SousMarin implements Ship {
     @Override
     public void takeDammage(Point p) {
         life--;
-//        System.out.println("hp left sous-marin : " + life);
     }
 
     @Override

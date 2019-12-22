@@ -1,14 +1,5 @@
-import model.ship.Point;
-import model.ship.Ship;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 public class MainFrame extends JPanel {
 

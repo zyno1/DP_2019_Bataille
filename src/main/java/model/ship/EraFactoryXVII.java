@@ -19,7 +19,7 @@ public class EraFactoryXVII implements EraFactory {
 
     @Override
     public void createShips() {
-        ArrayList list=new ArrayList<>();
+        ArrayList<Ship> list=new ArrayList<>();
         list.add(new Galion(new Point(0,0),0));
         list.add(new Galion(new Point(0,0),0));
         list.add(new VieuxSousMarin(new Point(0,0),0));

@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainMenu extends JPanel implements ActionListener {
 
@@ -29,10 +27,8 @@ public class MainMenu extends JPanel implements ActionListener {
 
     private String era;
     private String ai;
-    private String name = "";
 
     private Bataille model;
-    private Boolean setup = false;
 
     private JButton tempEra = null;
     private JButton tempAi = null;
@@ -62,6 +58,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
     }
 
+    //Setup du jeu
     public void mainGame() {
         model = new Bataille();
         gamePanel = new JPanel();
@@ -78,6 +75,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
     }
 
+    //Panel de choix
     public void newGame() {
 
         choicePanel = new JPanel();
@@ -136,6 +134,7 @@ public class MainMenu extends JPanel implements ActionListener {
         choicePanel.add(panelFinal);
     }
 
+    //Nombre de bateaux restant pendant le jeu
     public void score() {
 
         scorePanel = new JPanel();
@@ -159,6 +158,7 @@ public class MainMenu extends JPanel implements ActionListener {
 
     }
 
+    //Menu de fin
     public void setEnd() {
 
         endPanel = new JPanel();
@@ -252,9 +252,8 @@ public class MainMenu extends JPanel implements ActionListener {
         }
 
         if(actionEvent.getActionCommand().equals("Confirm")){
-            name = playerName.getText();
+            String name = playerName.getText();
             model.setUp(era, ai, name);
-            setup = true;
             test.setText("Ships left " + model.getName() + " : ");
 
             updateFrame();

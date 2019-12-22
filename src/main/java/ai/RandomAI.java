@@ -12,7 +12,7 @@ public class RandomAI implements AI {
     private Bataille model;
 
     public RandomAI(Bataille model){
-        pos = new ArrayList();
+        pos = new ArrayList<>();
         for(int i=0; i<10; i++){
             for(int j=0; j<10; j++){
                 pos.add(new Point(i,j));

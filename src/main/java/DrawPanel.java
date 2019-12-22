@@ -68,6 +68,7 @@ public class DrawPanel extends JPanel {
         }
     }
 
+    //permet de dessiner l'historique de nos tir réussi/ratés
     public void drawHistory(BufferedImage img) {
 
         Graphics g = img.getGraphics();
@@ -100,6 +101,7 @@ public class DrawPanel extends JPanel {
         }
     }
 
+    //permet de dessiner l'historique de l'IA sur notre partie du jeu, pour voir où elle a tiré
     public void drawHistoryIA(BufferedImage img){
 
         Graphics g = img.getGraphics();

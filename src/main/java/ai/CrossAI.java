@@ -14,7 +14,7 @@ public class CrossAI implements AI{
     private List<Point> nexts;
 
     public CrossAI(Bataille model){
-        pos = new ArrayList();
+        pos = new ArrayList<>();
         for(int i=0; i<10; i++){
             for(int j=0; j<10; j++){
                 pos.add(new Point(i,j));

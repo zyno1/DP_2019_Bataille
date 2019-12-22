@@ -81,6 +81,7 @@ public class Bataille {
         player2 = new Map(factory.getMap());
     }
 
+    //a chaque fois qu'on ajoute un bateau au joueur 1, on ajoute un bateau du même type à une position aléatoire pour l'IA
     public void addShip(Ship s){
         player1.addShip(s);
         Random r = new Random();
@@ -107,6 +108,7 @@ public class Bataille {
 
     public String getEra() { return era;}
 
+    //en fonction du joueur actuel, on shoot la map de l'autre joueur
     public boolean shoot(Point target){
         Map mapTargeted;
         if(playerTurn == 1){
@@ -125,11 +127,10 @@ public class Bataille {
 
     public void draw(BufferedImage img) {
 
-
         player1.draw(img);
-//        player2.draw(img);
     }
 
+    //si la partie est terminée, on récupère 1 ou 2 en fonction du joueur qui a gagné
     public int isGameover() {
         int gameover = 0;
 
@@ -147,7 +148,7 @@ public class Bataille {
         return gameover;
     }
 
-
+    //Vérifie que le bateau ne puisse pas être placé en dehors de la map
     public boolean checkPos(Ship s, int joueur){
         if(s==null){
             return true;
@@ -165,15 +166,14 @@ public class Bataille {
         }
 
         if(x>=0 && xbis >=0 && y >=0 && ybis>=0 && x<10 && xbis <=10 && y<10 && ybis <=10) {
-            return checkConflits(s,joueur);
+            return checkConflits(s,joueur); //appelle la vérification sur bateau
         }
 
         return false;
     }
 
+    //Vérifie que deux bateaux ne soient pas l'un sur l'autre
     private boolean checkConflits(Ship s, int joueur) {
-
-
         if(s==null){
             return true;
         }
@@ -190,6 +190,7 @@ public class Bataille {
 
         model.ship.Point point = s.getPos();
 
+        //liste des positions du bateau (si le bateau fait 4 de longueur et se trouve en 1,1 en direction 0 alors -> 1,1 ; 2,1 ; 3,1 ; 4,1
         if(s.getDirection() == 1) {
             for(int i = point.getY(); i<point.getY()+s.getHeight(); i++) {
                 aya.add(new Point(point.getX(),i));
@@ -222,7 +223,7 @@ public class Bataille {
                             int a = temp.getX() + j;
                             int b = temp.getY() + i;
                             if (p.getX() == a && p.getY() == b) {
-//                                System.out.println("conflit");
+                                //conflit
                                 return false;
                             }
 
